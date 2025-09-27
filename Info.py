@@ -25,18 +25,6 @@ MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', '')
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-').split()]
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-
-# 🌐 Flask App
-flask_app = Flask(__name__)
-
-@flask_app.route("/")
-def home():
-    return "❤️ Lovely Bot is Live!"
-
-# Run Flask in background
-def run():
-    flask_app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-
 threading.Thread(target=run).start()
 DATABASE_URI = environ.get('DATABASE_URI', ".mongodb.net/?retryWrites=true&w=majority&appName=")
 DATABASE_NAME = environ.get('DATABASE_NAME', "vi")
